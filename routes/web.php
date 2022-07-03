@@ -16,21 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthenticatedSessionController::class, 'create']);
+Route::get('/', function(){
+
+    return view('welcome');
+});
 
 Route::middleware('auth')->group(function(){
 
     Route::group([
         'prefix' => 'admin', 
-        'middleware' => 
-        'isAdmin'
+        'middleware' => 'role:admin'
         ], function(){
 
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     });
 
     Route::group([
-        'prefix' => 'user'
+        'prefix' => 'user',
+        'middleware' => 'role:user'
         ], function(){
 
         Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');

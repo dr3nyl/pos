@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Services\RoleRedirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return auth()->user()->is_admin ? redirect()->intended('/admin/dashboard') : redirect()->intended('/user/dashboard');
+        $role = new RoleRedirect();
+
+        return $role->redirect();
+
     }
 
     /**
