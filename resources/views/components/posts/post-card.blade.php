@@ -10,7 +10,11 @@
                         <h2>{{ $post->user->name }}</h2>
                         <p class="text-xs text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
-                    <div class="ml-auto mb-5">x</div>
+
+                    <a class="ml-auto mb-5" style="color:#AA4A44;" href="#">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                    
                 </div>
                 <div class="body mb-7 text-sm">
                     {{ $post->body }}

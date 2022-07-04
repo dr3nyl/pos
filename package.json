@@ -19,5 +19,7 @@
         "postcss": "^8.4.6",
         "tailwindcss": "^3.1.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.1.1"
+    }
 }
