@@ -12,6 +12,9 @@
 
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+        
+        <!-- Livewire assets -->
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -29,7 +32,12 @@
                 {{ $slot }}
             </main>
         </div>
-    </body>
+
         <!-- JS Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+
+        <!-- Livewire assets -->
+        @livewireScripts
+    </body>
+        
 </html>

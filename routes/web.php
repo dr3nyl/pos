@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\User\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +27,7 @@ Route::middleware('auth')->group(function(){
         'middleware' => 'role:admin'
         ], function(){
 
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     });
 
     Route::group([
@@ -36,7 +35,7 @@ Route::middleware('auth')->group(function(){
         'middleware' => 'role:user'
         ], function(){
 
-        Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
     });
     
