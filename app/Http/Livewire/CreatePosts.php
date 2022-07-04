@@ -30,7 +30,12 @@ class CreatePosts extends Component
         
         $this->posts = Post::orderBy('id','desc')->get();
             
-        session()->flash('message', 'You created a Post!');
+        $this->dispatchBrowserEvent('swal:modal', [
+
+            'type' => 'success',
+            'title' => 'Post sucessfully!',
+            'text' => ''
+        ]);
     }
 
     public function render()

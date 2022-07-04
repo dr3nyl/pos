@@ -38,6 +38,19 @@
 
         <!-- Livewire assets -->
         @livewireScripts
+
+        <!-- Sweet alert cdn -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+            window.addEventListener('swal:modal', event => {
+                swal({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.type,
+                });
+            });
+        </script>
     </body>
         
 </html>
