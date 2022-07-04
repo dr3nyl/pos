@@ -7,5 +7,6 @@
 
     <livewire:create-posts />
     
+    <livewire:post-section />
 
 </x-app-layout>

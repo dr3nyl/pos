@@ -29,7 +29,7 @@ class CreatePosts extends Component
         $this->story = '';
         
         $this->posts = Post::orderBy('id','desc')->get();
-
+            
         session()->flash('message', 'You created a Post!');
     }
 

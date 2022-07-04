@@ -1,12 +1,12 @@
 <div>
     
     <!-- Textarea to post -->
-    <x-create-post />
+    <x-posts.create-post />
 
     @forelse($posts as $post)
 
         <!-- all post in public wall -->
-        <x-post-card :post="$post" />
+        <x-posts.post-card :post="$post" />
         
     @empty
 
@@ -15,5 +15,5 @@
         </div>
 
     @endforelse
-
+    
 </div>
