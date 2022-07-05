@@ -7,20 +7,13 @@ use Livewire\Component;
 
 class PostSection extends Component
 {
-    public Post $post;
     public $posts;
 
-    protected $listeners = ['$refresh'];
-
-    public function mount()
-    {
-       $this->posts = Post::orderBy('id','desc')->get();
-      // $this->refreshPosts();
-    }
+    protected $listeners = ['refreshPosts'];
 
     public function refreshPosts()
     {
-        return Post::orderBy('id','desc')->get();
+        $this->posts = Post::orderBy('id','desc')->get();
     }
 
     public function render()

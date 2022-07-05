@@ -12,7 +12,7 @@ window.addEventListener('swal:confirm', event => {
         text: event.detail.text,
         icon: event.detail.type,
         buttons: true,
-        dangerMode: true
+        dangerMode: true,
     })
     .then((willDelete) => {
 
