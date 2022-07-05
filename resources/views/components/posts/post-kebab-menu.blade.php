@@ -53,7 +53,7 @@
                     Delete Post
                 </button>
 
-                <a href="#" class="block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 disabled:text-gray-500" >
+                <a href="#" class="block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 disabled:text-gray-500 line-through" >
                     <i class="fa fa-pencil fa-xs mr-2" aria-hidden="true"></i>
                     Update Post
                 </a>

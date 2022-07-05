@@ -20,9 +20,9 @@
 
                 <div class="footer border-b-2 border-t-2 text-sm">
                     <div class="flex justify-around py-1">
-                        <div>Like</div>
-                        <div>Comment</div>
-                        <div>Share</div>
+                        <button class="hover:text-dark" type="button"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <button class="hover:text-dark" type="button"><i class="fas fa-comment"></i> Comment</button>
+                        <button class="hover:text-dark" type="button"><i class="fas fa-share"></i> Share</button>
                     </div>
                 </div>
             </div>
