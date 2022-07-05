@@ -5,8 +5,6 @@
         </h2>
     </x-slot>
 
-    <livewire:create-posts />
-    
-    <livewire:post-section />
+    <livewire:create-posts :posts="$posts" />
 
 </x-app-layout>

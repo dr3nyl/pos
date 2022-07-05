@@ -41,15 +41,8 @@
 
         <!-- Sweet alert cdn -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-        <script>
-            window.addEventListener('swal:modal', event => {
-                swal({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.type,
-                });
-            });
-        </script>
+        
+        <!-- Sweet alert custom js -->
+        <script src="{{ asset('js/sweet-alert.js') }}" ></script>
     </body>
 </html>

@@ -11,9 +11,9 @@
                         <p class="text-xs text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
 
-                    <a class="ml-auto mb-5" style="color:#AA4A44;" href="#">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </a>
+                    <button type="button" wire:click="deleteConfirm({{ $post->id }})" class="ml-auto mb-5"  href="#">
+                        <i class="fa fa-trash fa-xs" aria-hidden="true"></i>
+                    </button>
                     
                 </div>
                 <div class="body mb-7 text-sm">
