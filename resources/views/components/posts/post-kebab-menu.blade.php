@@ -40,7 +40,7 @@
             x-on:click.outside="close($refs.button)"
             :id="$id('dropdown-button')"
             style="display: none;"
-            class="absolute  mt-2 w-40 bg-white rounded shadow-md overflow-hidden"
+            class="absolute w-40 bg-white rounded shadow-md overflow-hidden"
         >
             <div>
                 <button 
@@ -53,10 +53,14 @@
                     Delete Post
                 </button>
 
-                <a href="#" class="block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 disabled:text-gray-500 line-through" >
+                <button
+                    type="button"
+                    class="block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 disabled:text-gray-500 line-through"
+                    type="button"
+                    disabled >
                     <i class="fa fa-pencil fa-xs mr-2" aria-hidden="true"></i>
                     Update Post
-                </a>
+                </button>
             </div>
         </div>
     </div>

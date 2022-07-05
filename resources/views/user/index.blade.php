@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+    <!-- Create post textfield and wall posts -->
     <livewire:create-posts :posts="$posts" />
     
     <!-- <livewire:post-section /> -->
