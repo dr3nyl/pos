@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class create-post extends Component
+class PostKebabMenu extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class create-post extends Component
      */
     public function render()
     {
-        return view('components.create-post');
+        return view('components.post-kebab-menu');
     }
 }

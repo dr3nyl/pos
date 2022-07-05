@@ -10,10 +10,8 @@
                         <h2>{{ $post->user->name }}</h2>
                         <p class="text-xs text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
-
-                    <button type="button" wire:click="deleteConfirm({{ $post->id }})" class="ml-auto mb-5"  href="#">
-                        <i class="fa fa-trash fa-xs" aria-hidden="true"></i>
-                    </button>
+                    
+                    <x-posts.post-kebab-menu :post="$post"/>
                     
                 </div>
                 <div class="body mb-7 text-sm">
