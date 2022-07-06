@@ -1,4 +1,7 @@
-<div class="footer divide-y text-sm -mb-1">
+<div class="footer divide-y text-sm -mb-1"
+     x-cloak x-data="{ show: false}" 
+    @click.away="show = false">
+
     <!-- Empty div just to trigger divide-y style -->
     <div class="flex items-center">
         @if($count)
@@ -15,12 +18,18 @@
                 <i class="fas fa-thumbs-up {{ $isLiked ? 'text-blue-400' : '' }}"></i> 
                 Like
             </button>
-        <button 
-            class="hover:text-dark" 
-            type="button">
-            <i class="fas fa-comment"></i> 
-            Comment
-        </button>
+
+            
+            <div @click="show = ! show">
+                <button 
+                    class="hover:text-dark" 
+                    type="button">
+                    <i class="fas fa-comment"></i> 
+                    Comment
+                </button>
+            </div>
+
+        
         <button 
             class="hover:text-dark" 
             type="button">
@@ -28,4 +37,9 @@
             Share
         </button>
     </div>
+
+    <div x-show="show">
+        <textarea  class="rounded-lg mt-3 mb-3 w-full border-gray-200" name="" id="" cols="54" rows="2" placeholder="comment here"></textarea>
+    </div>
+   
 </div>
