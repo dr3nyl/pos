@@ -17,8 +17,8 @@ class CreatePosts extends Component
     {
         return view('livewire.create-posts');
     }
-
-    public function store()
+    
+    public function store(): void
     {
         // Put loading every post
         sleep(1);
@@ -40,7 +40,7 @@ class CreatePosts extends Component
         ]);
     }
 
-    public function destroy($id)
+    public function destroy($id): void
     {
         Post::where('id', $id)->delete();
 
