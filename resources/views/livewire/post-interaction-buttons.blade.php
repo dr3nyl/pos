@@ -1,6 +1,6 @@
 <div class="footer divide-y text-sm -mb-1"
      x-cloak x-data="{ show: false}" 
-    @click.away="show = false">
+     @click.away="show = false">
 
     <!-- Empty div just to trigger divide-y style -->
     <div class="flex items-center">
@@ -39,7 +39,9 @@
     </div>
 
     <div x-show="show">
-        <textarea  class="rounded-lg mt-3 mb-3 w-full border-gray-200" name="" id="" cols="54" rows="2" placeholder="comment here"></textarea>
+        <form  wire:submit.prevent="storeComment" action="" method="post">
+            <input type="text" class="rounded-lg mt-3 mb-3 w-full border-gray-200" name="" id="" cols="54" rows="2" placeholder="comment here"></input>
+        </form>
     </div>
    
 </div>

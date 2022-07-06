@@ -30,6 +30,9 @@ class PostInteractionButtons extends Component
         return view('livewire.post-interaction-buttons');
     }
     
+    /**
+     * Start like section
+     */
     public function storeLike()
     {
 
@@ -66,5 +69,17 @@ class PostInteractionButtons extends Component
 
         $this->count = $this->posts->likesCount($this->post);
 
+    }
+    /**
+     * End like section
+     */
+
+
+     /**
+      * Start comment section
+      */
+    public function storeComment()
+    {
+        dd('test lang');
     }
 }
