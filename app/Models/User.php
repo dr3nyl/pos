@@ -43,14 +43,37 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Return relationship of user to a post
+     *
+     * @return
+     * 
+     */
     public function post()
     {
         return $this->hasMany(Post::class);
     }
 
+    /**
+     * Return relationship of user to like model
+     *
+     * @return
+     * 
+     */
     public function like()
     {
         return $this->hasMany(Like::class);
+    }
+
+    /**
+     * Return relationship of user to comment
+     *
+     * @return
+     * 
+     */
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
     
 }
