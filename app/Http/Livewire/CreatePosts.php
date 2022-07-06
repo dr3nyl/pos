@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CreatePosts extends Component
 {
-    public $story;
+    public $body;
     public $posts;
 
     // Event listener
@@ -26,10 +26,10 @@ class CreatePosts extends Component
         Post::create([
 
             'user_id' => auth()->id(),
-            'body' => $this->story
+            'body' => $this->body
         ]);
 
-        $this->story = '';
+        $this->body = '';
         
         $this->refreshPostSection();
 

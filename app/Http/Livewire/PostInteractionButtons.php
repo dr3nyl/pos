@@ -3,16 +3,24 @@
 namespace App\Http\Livewire;
 
 use App\Models\Like;
+use App\Models\Post;
 use Livewire\Component;
 
 class PostInteractionButtons extends Component
 {
+    /**
+     * $post = current post instance
+     * $posts = Post model
+     * $count = count of likes per post
+     * 
+     */
+
     public $count;
     public $post;
 
-    public function mount()
+    public function mount(Post $posts)
     {
-        $this->count = Like::where('post_id', $this->post->id)->count();
+        $this->count = $posts->likesCount($this->post);
         
     }
     
@@ -54,8 +62,6 @@ class PostInteractionButtons extends Component
             
             $this->count--;
         }
-
-      // $this->count = Like::where('post_id', $this->post->id)->count();
        
     }
 
@@ -66,7 +72,7 @@ class PostInteractionButtons extends Component
             'post_id' => $this->post->id
         ])->delete();
 
-        $this->count = Like::where('post_id', $this->post->id)->count();
+        $this->count = $this->posts->likesCount($this->post);
 
     }
 }

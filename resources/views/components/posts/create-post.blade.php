@@ -8,7 +8,7 @@
                         <h2>{{ auth()->user()->name }}</h2>
                     </div>
                     <div class="body">
-                        <textarea wire:model.defer="story" class="rounded-lg mt-3 mb-3 w-full border-gray-200" name="post" id="post" cols="54" rows="2" placeholder="Say something.." required></textarea>
+                        <textarea wire:model.defer="body" class="rounded-lg mt-3 mb-3 w-full border-gray-200" name="post" id="post" cols="54" rows="2" placeholder="Say something.." required></textarea>
 
                     </div>
                     <div class="footer">

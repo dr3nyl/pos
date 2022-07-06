@@ -1,6 +1,6 @@
 <div>
     
-    <!-- Textarea to post -->
+    <!-- Textarea to create post -->
     <x-posts.create-post />
 
     @forelse($posts as $post)
