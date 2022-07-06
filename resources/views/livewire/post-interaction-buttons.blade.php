@@ -2,8 +2,8 @@
     <!-- Empty div just to trigger divide-y style -->
     <div class="flex items-center">
         @if($count)
-            <i class="fas fa-thumbs-up fa-xs mr-2 text-blue-400"></i>
-            <h4 class="text-gray-500 text-xs">{{ $count }}</h4>
+            <i class="fas fa-thumbs-up fa-sm mr-2 text-blue-400"></i>
+            <h4 class="text-gray-500 text-sm">{{ $count }}</h4>
         @endif
     </div>
 
@@ -12,7 +12,7 @@
                 wire:click="storeLike"
                 class="hover:text-dark " 
                 type="button">
-                <i class="fas fa-thumbs-up"></i> 
+                <i class="fas fa-thumbs-up {{ $isLiked ? 'text-blue-400' : '' }}"></i> 
                 Like
             </button>
         <button 

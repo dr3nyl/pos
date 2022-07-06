@@ -17,11 +17,12 @@ class PostInteractionButtons extends Component
 
     public $count;
     public $post;
+    public $isLiked;
 
     public function mount(Post $posts)
     {
         $this->count = $posts->likesCount($this->post);
-        
+        $this->isLiked = $this->post->likedBy(auth()->user());
     }
     
     public function render()
@@ -32,17 +33,6 @@ class PostInteractionButtons extends Component
     public function storeLike()
     {
 
-        // if ($this->post->isLiked()) {
-        //     $this->post->removeLike();
-
-        //     $this->count--;
-        // } elseif (auth()->user()) {
-        //     $this->post->likes()->create([
-        //         'user_id' => auth()->id(),
-        //     ]);
-
-        //     $this->count++;
-            
         if ( !$this->post->likedBy(auth()->user())) {
 
             Like::create([
@@ -51,6 +41,7 @@ class PostInteractionButtons extends Component
             ]);
 
             $this->count++;
+            $this->isLiked = 1;
         }
         
         else{
@@ -61,6 +52,7 @@ class PostInteractionButtons extends Component
             ])->delete();
             
             $this->count--;
+            $this->isLiked = 0;
         }
        
     }
