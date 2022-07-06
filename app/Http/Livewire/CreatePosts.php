@@ -13,11 +13,24 @@ class CreatePosts extends Component
     // Event listener
     protected $listeners = ['destroy'];
 
+    /**
+     * Display livewire component blade
+     *
+     * @return view
+     * 
+     */
     public function render()
     {
         return view('livewire.create-posts');
     }
     
+    
+    /**
+     * Store a post to Post model
+     *
+     * @return void
+     * 
+     */
     public function store(): void
     {
         // Put loading every post
@@ -29,10 +42,12 @@ class CreatePosts extends Component
             'body' => $this->body
         ]);
 
+        // Empty post body after submission
         $this->body = '';
         
         $this->refreshPostSection();
-
+        
+        // Trigger sweet alert
         $this->swalModal('modal', [
             'type' => 'success',
             'title' => 'Post sucessfully!',
@@ -40,6 +55,14 @@ class CreatePosts extends Component
         ]);
     }
 
+    /**
+     * Delete a post from Post model
+     *
+     * @param mixed $id
+     * 
+     * @return void
+     * 
+     */
     public function destroy($id): void
     {
         Post::where('id', $id)->delete();
@@ -53,6 +76,14 @@ class CreatePosts extends Component
         ]);
     }
 
+    /**
+     * Sweet alert delete confirmation
+     *
+     * @param mixed $id
+     * 
+     * @return void
+     * 
+     */
     public function deleteConfirm($id)
     {
         $this->swalModal('confirm', [
@@ -63,11 +94,26 @@ class CreatePosts extends Component
         ]);
     }
 
+    /**
+     * Create sweet modal
+     *
+     * @param mixed $modalType
+     * @param Array $attributes
+     * 
+     * @return void
+     * 
+     */
     public function swalModal($modalType, Array $attributes)
     {
         $this->dispatchBrowserEvent('swal:'.$modalType, $attributes);
     }
 
+    /**
+     * Rehydrate / Re-render Post model
+     *
+     * @return void
+     * 
+     */
     public function refreshPostSection()
     {
         $this->posts = Post::orderBy('id','desc')->get();
