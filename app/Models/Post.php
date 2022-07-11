@@ -70,4 +70,17 @@ class Post extends Model
         return $this->hasMany(Commment::class);
     }
 
+    public function comments(Post $post)
+    {
+        return Comment::leftJoin('users', 'users.id', '=', 'comments.user_id')
+            ->where('post_id', $post->id)
+            ->orderBy('comments.id', 'desc')
+            ->get();
+    }
+
+    public function commentOwner(Post $post)
+    {
+        return Comment::with('user', 'post')->get();
+    }
+
 }
