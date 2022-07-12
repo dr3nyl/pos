@@ -102,6 +102,8 @@ class PostInteractionButtons extends Component
         ]);
 
         $this->comment = '';
+        
+        $this->refreshCommentSection();
 
         $this->swalModal('modal', [
             'type' => 'success',
@@ -116,5 +118,10 @@ class PostInteractionButtons extends Component
         $page = ++$this->commentCount;
         
         array_push($this->data, $this->comments(10, ['*'], 'page', $page)->items);
+    }
+
+    private function refreshCommentSection()
+    {
+        $this->comments = Comment::where('post_id', $this->post->id)->orderBy('id','desc')->get();
     }
 }
