@@ -3,7 +3,7 @@
 <div class="py-2 flex items-center justify-center">
     <div class="bg-white border-b border-gray-200 px-6 py-3 w-1/3 break-all">
         <div class="header flex items-center mb-4">
-            <img class="rounded-3xl mr-2" src="{{ asset('images/clown_teyvat.jpg') }}" alt="" width="50" height="50">
+            <img class="rounded-3xl mr-2" src="{{ asset('storage/' . $post->user->photo)}}" alt="" width="50" height="50">
             <div class="flex flex-col">
                 <!-- Post name -->
                 <h2>{{ $post->user->name }}</h2>

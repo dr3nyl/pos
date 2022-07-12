@@ -35,15 +35,15 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
 
-        $attributes = $request->validate([
+        $attributes = request()->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'photo' => ['required']
         ]);
 
-        $attributes['photo'] = $request->file('photo')->store('profile-picture');
-
+        $attributes['photo'] = request()->file('photo')->store('profile-picture');
+        
         $user = User::create($attributes);
 
         event(new Registered($user));
