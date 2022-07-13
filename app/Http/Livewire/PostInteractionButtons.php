@@ -30,12 +30,11 @@ class PostInteractionButtons extends Component
     public string $commentLabel;
     protected int $commentCount = 0;
 
-    public function mount(Post $posts, User $user)
+    public function mount(Post $posts)
     {
         $this->count = $posts->likesCount($this->post);
         $this->isLiked = $this->post->likedBy(auth()->user());
-        $this->comments = $posts->comments($this->post);
-
+        $this->comments = $posts::comments($this->post);
         $this->commentLabel = Str::plural('comment',$this->comments);
         
     }
@@ -122,6 +121,6 @@ class PostInteractionButtons extends Component
 
     private function refreshCommentSection()
     {
-        $this->comments = Comment::where('post_id', $this->post->id)->orderBy('id','desc')->get();
+        $this->comments = Post::comments($this->post);
     }
 }
