@@ -15,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
-
-    return view('welcome');
-});
+Route::get('/', [UserDashboardController::class, 'index'])->name('dashboard');
 
 Route::middleware('auth')->group(function(){
 
@@ -30,15 +27,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     });
 
-    Route::group([
-        'prefix' => 'user',
-        'middleware' => 'role:user'
-        ], function(){
-
-        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-
-    });
-    
 });
 
 

@@ -1,6 +1,6 @@
 @props(['post'])
 
-<div class="py-2 flex items-center justify-center">
+<div class="py-2 flex items-center justify-center {{ auth()->user() ? '' : 'mt-3' }}">
     <div class="bg-white border-b border-gray-200 px-6 py-3 w-1/3 break-all">
         <div class="header flex items-center mb-4">
             <img class="rounded-3xl mr-2" src="{{ asset('storage/' . $post->user->photo)}}" alt="" width="50" height="50">
@@ -19,6 +19,12 @@
             {{ $post->body }}
         </div>
         <!-- Like, Comment, and Share buttons -->
-        <livewire:post-interaction-buttons :post="$post" :wire:key="$post->id"/>
+        @auth
+
+            <livewire:post-interaction-buttons :post="$post" :wire:key="$post->id"/>
+            
+        @else
+            <h2 class="italic text-blue-400 text-xs">Sign up and react to this post!</h2>
+        @endauth
     </div>
 </div>

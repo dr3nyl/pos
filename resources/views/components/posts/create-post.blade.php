@@ -1,4 +1,4 @@
-<div class="py-12 flex items-center justify-center">
+<div class="py-10 flex items-center justify-center">
     <div class="w-1/3 sm:px-6 lg:px-8 p-6 bg-white border-b border-gray-200">
         <form wire:submit.prevent="store" action="" method="post">
             <div class="header flex items-center">

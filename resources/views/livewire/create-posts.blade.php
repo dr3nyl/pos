@@ -1,7 +1,9 @@
 <div>
     
     <!-- Textarea to create post -->
-    <x-posts.create-post />
+    @auth
+        <x-posts.create-post />
+    @endauth
 
     @forelse($posts as $post)
 

@@ -34,9 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $role = new RoleRedirect();
-
-        return $role->redirect();
+        return redirect('/');
 
     }
 
