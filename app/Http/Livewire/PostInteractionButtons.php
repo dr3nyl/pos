@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
+use App\Notifications\CommentAdded;
 use App\Traits\NotificationTrait;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -71,6 +72,8 @@ class PostInteractionButtons extends Component
             $this->count--;
             $this->isLiked = 0;
         }
+
+        $this->refreshCommentSection();
        
     }
 
@@ -94,7 +97,7 @@ class PostInteractionButtons extends Component
       */
     public function storeComment()
     {
-        Comment::create([
+        $newComment = Comment::create([
             'user_id' => auth()->id(),
             'post_id' => $this->post->id,
             'comment' => $this->comment
@@ -103,6 +106,8 @@ class PostInteractionButtons extends Component
         $this->comment = '';
         
         $this->refreshCommentSection();
+
+        $this->post->user->notify(new CommentAdded($newComment));
 
         $this->swalModal('modal', [
             'type' => 'success',

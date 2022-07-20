@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,14 +12,15 @@ class CommentAdded extends Notification
 {
     use Queueable;
 
+    private $comment;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Comment $comment)
     {
-        //
+        $this->comment = $comment;
     }
 
     /**
@@ -55,7 +57,11 @@ class CommentAdded extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'comment_id' => $this->comment->id,
+            'comment_body' => $this->comment->comment,
+            'user_name' => $this->comment->user->name,
+            'post_id' => $this->comment->post->id,
+            'post_body' => $this->comment->post->body,
         ];
     }
 }
