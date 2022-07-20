@@ -2,6 +2,9 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    variants: {
+        textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+         },
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
