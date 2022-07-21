@@ -60,6 +60,7 @@ class CommentAdded extends Notification
             'comment_id' => $this->comment->id,
             'comment_body' => $this->comment->comment,
             'user_name' => $this->comment->user->name,
+            'user_avatar' => $this->comment->user->photo,
             'post_id' => $this->comment->post->id,
             'post_body' => $this->comment->post->body,
         ];
