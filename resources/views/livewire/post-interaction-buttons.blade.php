@@ -60,7 +60,7 @@
                 <div class="header flex items-start mb-7 mt-3">
                     <img class="rounded-3xl mr-2" src="{{ asset('storage/' . $comment->user->photo)}}"  alt="" width="45" height="45">
                     <div class="flex-col w-2/3">
-                        <div class="flex flex-col bg-gray-100 px-3 py-1 rounded-lg">
+                        <div class="flex flex-col bg-gray-100 px-3 py-2 rounded-xl">
                             <!-- Post name -->
                             <h2 class="font-bold">{{ $comment->name }}</h2>
                             <!-- Body of the post -->
