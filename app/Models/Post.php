@@ -72,7 +72,8 @@ class Post extends Model
 
     public static function comments(Post $post)
     {
-        return Comment::leftJoin('users', 'users.id', '=', 'comments.user_id')
+        return Comment::select('comments.*', 'users.name')
+            ->leftJoin('users', 'users.id', '=', 'comments.user_id')
             ->where('post_id', $post->id)
             ->orderBy('comments.id', 'desc')
             ->get();

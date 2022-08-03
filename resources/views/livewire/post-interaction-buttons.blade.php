@@ -54,7 +54,6 @@
                 </form>
             </div>
             
- 
             @foreach($comments as $comment)
 
                 <div class="header flex items-start mb-7 mt-3">
