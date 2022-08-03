@@ -76,10 +76,13 @@
                                 Like
                             </button>
                             <button 
-                                class="hover:text-dark text-xs" 
+                                class="hover:text-dark text-xs mr-2" 
                                 type="button">
                                 Reply
                             </button>
+                            <div>
+                                <p class="text-xs text-gray-400">{{ $comment->created_at->diffForHumans() }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
