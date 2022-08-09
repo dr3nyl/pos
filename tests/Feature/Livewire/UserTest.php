@@ -15,17 +15,34 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /**
+     * Assign value for $posts
+     * 
+     */
+    public function test_has_data_passed_correctly()
+    {
+        $posts = Post::factory(3)->create();
+
+        Livewire::test(CreatePosts::class, ['posts' => $posts])
+            ->assertSet('posts', $posts)
+            ->assertSee('body'); 
+    }
+    
+    /**
      * A basic feature test example.
      *
      * @return void
      */
     public function test_user_can_create_post()
     {
-        $user = $this->actingAs(User::factory()->create());
+        $posts = Post::factory(3)->create();
+        Livewire::actingAs(User::factory()->create());
 
-        Livewire::test(CreatePosts::class)
-            ->set('user_id', $user->id)
-            ->set('body', 'Test body of a post')
+        Livewire::test(CreatePosts::class, 
+            [
+                'posts' => $posts,
+                'body' => 'Test body of a post'
+            ])
+            ->assertSet('posts', $posts)
             ->call('store');
 
         $this->assertTrue(Post::whereBody('Test body of a post')->exists());
