@@ -16,7 +16,7 @@ class UserTest extends TestCase
 
     /**
      * Assign value for $posts
-     * 
+     *
      */
     public function test_has_data_passed_correctly()
     {
@@ -24,9 +24,9 @@ class UserTest extends TestCase
 
         Livewire::test(CreatePosts::class, ['posts' => $posts])
             ->assertSet('posts', $posts)
-            ->assertSee('body'); 
+            ->assertSee('body');
     }
-    
+
     /**
      * A basic feature test example.
      *
@@ -37,13 +37,15 @@ class UserTest extends TestCase
         $posts = Post::factory(3)->create();
         Livewire::actingAs(User::factory()->create());
 
-        Livewire::test(CreatePosts::class, 
+        Livewire::test(
+            CreatePosts::class,
             [
                 'posts' => $posts,
                 'body' => 'Test body of a post'
-            ])
-            ->assertSet('posts', $posts)
-            ->call('store');
+            ]
+        )
+        ->assertSet('posts', $posts)
+        ->call('store');
 
         $this->assertTrue(Post::whereBody('Test body of a post')->exists());
     }
