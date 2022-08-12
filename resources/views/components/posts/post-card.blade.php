@@ -11,7 +11,9 @@
                 <p class="text-xs text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
             </div>
             <!-- ... button -->
-            <x-posts.post-kebab-menu :post="$post"/>
+            @auth
+              <x-posts.post-kebab-menu :post="$post"/>
+            @endauth
             
         </div>
         <!-- Body of the post -->
