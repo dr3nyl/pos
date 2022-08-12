@@ -11,9 +11,9 @@
                 <p class="text-xs text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
             </div>
             <!-- ... button -->
-            @auth
+            @if(Auth::check() && $post->user->id == auth()->id())
               <x-posts.post-kebab-menu :post="$post"/>
-            @endauth
+            @endif
             
         </div>
         <!-- Body of the post -->
