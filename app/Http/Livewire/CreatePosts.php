@@ -3,11 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use App\Traits\NotificationTrait;
 use Livewire\Component;
 
 class CreatePosts extends Component
 {
-
+    use NotificationTrait;
+    
     public $body;
 
     /**
