@@ -3,17 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
-use App\Traits\NotificationTrait;
 use Livewire\Component;
 
 class CreatePosts extends Component
 {
-    use NotificationTrait;
 
     public $body;
-
-    // Event listener
-    protected $listeners = ['destroy'];
 
     /**
      * Display livewire component blade
@@ -25,7 +20,6 @@ class CreatePosts extends Component
     {
         return view('livewire.create-posts');
     }
-    
     
     /**
      * Store a post to Post model
@@ -56,42 +50,4 @@ class CreatePosts extends Component
             'text' => ''
         ]);
     }
-
-    /**
-     * Delete a post from Post model
-     *
-     * @param mixed $id
-     * 
-     * @return void
-     * 
-     */
-    public function destroy($id): void
-    {
-        Post::where('id', $id)->delete();
-
-        $this->swalModal('modal', [
-            'type' => 'success',
-            'title' => 'Post deleted!',
-            'text' => ''
-        ]);
-    }
-
-    /**
-     * Sweet alert delete confirmation
-     *
-     * @param mixed $id
-     * 
-     * @return void
-     * 
-     */
-    public function deleteConfirm($id)
-    {
-        $this->swalModal('confirm', [
-            'type' => 'warning',
-            'title' => 'Are you sure?',
-            'text' => "You won't be able to revert this",
-            'id' => $id
-        ]);
-    }
-
 }
