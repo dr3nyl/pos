@@ -4,10 +4,8 @@
             {{ __('Activity Feed') }}
         </h2>
     </x-slot>
-
     <!-- Create post textfield and wall posts -->
     <livewire:create-posts :posts="$posts" />
-    
-    <!-- <livewire:post-section /> -->
-
+    <!-- Display wall post -->
+    <livewire:post-section :posts="$posts"  />
 </x-app-layout>

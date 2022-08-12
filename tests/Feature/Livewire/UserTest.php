@@ -18,7 +18,7 @@ class UserTest extends TestCase
      * Assign value for $posts
      *
      */
-    public function test_has_data_passed_correctly()
+    public function test_user_posts_are_rendered_in_the_dashboard()
     {
         $posts = Post::factory(3)->create();
 
@@ -32,7 +32,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_user_can_create_post()
+    public function test_authenticated_user_can_create_post()
     {
         $posts = Post::factory(3)->create();
         Livewire::actingAs(User::factory()->create());
@@ -49,4 +49,28 @@ class UserTest extends TestCase
 
         $this->assertTrue(Post::whereBody('Test body of a post')->exists());
     }
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_authenticated_user_can_delete_post()
+    {
+        $posts = Post::factory(3)->create();
+        Livewire::actingAs(User::factory()->create());
+
+        Livewire::test(
+            CreatePosts::class,
+            [
+                'posts' => $posts,
+                'body' => 'Test body of a post'
+            ]
+        )
+        ->assertSet('posts', $posts)
+        ->call('store');
+
+        $this->assertTrue(Post::whereBody('Test body of a post')->exists());
+    }
+    
 }

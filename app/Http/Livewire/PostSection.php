@@ -11,6 +11,12 @@ class PostSection extends Component
 
     protected $listeners = ['refreshPosts'];
 
+    /**
+     * Rehydrate / Re-render Post model
+     *
+     * @return void
+     * 
+     */
     public function refreshPosts()
     {
         $this->posts = Post::orderBy('id','desc')->get();

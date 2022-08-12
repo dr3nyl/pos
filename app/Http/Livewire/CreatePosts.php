@@ -11,7 +11,6 @@ class CreatePosts extends Component
     use NotificationTrait;
 
     public $body;
-    public $posts;
 
     // Event listener
     protected $listeners = ['destroy'];
@@ -48,7 +47,7 @@ class CreatePosts extends Component
         // Empty post body after submission
         $this->body = '';
         
-        $this->refreshPostSection();
+        $this->emit('refreshPosts');
         
         // Trigger sweet alert
         $this->swalModal('modal', [
@@ -69,8 +68,6 @@ class CreatePosts extends Component
     public function destroy($id): void
     {
         Post::where('id', $id)->delete();
-
-        $this->refreshPostSection();
 
         $this->swalModal('modal', [
             'type' => 'success',
@@ -97,16 +94,4 @@ class CreatePosts extends Component
         ]);
     }
 
-    /**
-     * Rehydrate / Re-render Post model
-     *
-     * @return void
-     * 
-     */
-    public function refreshPostSection()
-    {
-        $this->posts = Post::orderBy('id','desc')->get();
-    }
-
-    
 }
