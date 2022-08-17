@@ -10,10 +10,18 @@ class PostSection extends Component
 {
     use NotificationTrait;
 
-    public $posts;
-    
+    public $postPerPage = 5;
+
     // Event listeners
-    protected $listeners = ['refreshPosts', 'destroy'];
+    protected $listeners = [
+        'refreshPosts', 
+        'destroy',
+        'load-more' => 'loadMore'];
+
+    public function loadMore()
+    {
+        $this->postPerPage += 5;
+    }
 
     /**
      * Rehydrate / Re-render Post model
@@ -23,12 +31,7 @@ class PostSection extends Component
      */
     public function refreshPosts()
     {
-        $this->posts = Post::orderBy('id','desc')->get();
-    }
-
-    public function render()
-    {
-        return view('livewire.post-section');
+        $this->posts = Post::latest()->limit($this->postPerPage)->get();
     }
 
     /**
@@ -42,14 +45,14 @@ class PostSection extends Component
     public function destroy($id): void
     {
         Post::where('id', $id)->delete();
-
-        $this->refreshPosts();
         
         $this->swalModal('modal', [
             'type' => 'success',
             'title' => 'Post deleted!',
             'text' => ''
         ]);
+
+        $this->refreshPosts();
     }
 
     /**
@@ -68,6 +71,13 @@ class PostSection extends Component
             'text' => "You won't be able to revert this",
             'id' => $id
         ]);
+    }
+
+    public function render()
+    {
+        $posts = Post::latest()->limit($this->postPerPage)->get();
+
+        return view('livewire.post-section', ['posts'=> $posts]);
     }
 
 }

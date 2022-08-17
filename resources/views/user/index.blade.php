@@ -7,5 +7,14 @@
     <!-- Create post textfield and wall posts -->
     <livewire:create-posts />
     <!-- Display wall post -->
-    <livewire:post-section :posts="$posts"  />
+    <livewire:post-section />
+
+    <script type="text/javascript">
+         window.onscroll = function(ev) {
+         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+         window.livewire.emit('load-more');
+         }
+         };
+      </script>
+      
 </x-app-layout>
