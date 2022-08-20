@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [UserDashboardController::class, 'index'])->name('dashboard');
 
 Route::middleware('auth')->group(function(){
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
     Route::group([
         'prefix' => 'admin', 
