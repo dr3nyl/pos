@@ -11,7 +11,7 @@ class PostSection extends Component
     use NotificationTrait;
 
     public $postPerPage = 5;
-
+    public $isUserInProfileSection;
     // Event listeners
     protected $listeners = [
         'refreshPosts', 
