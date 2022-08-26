@@ -4,16 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class card extends Component
+class Card extends Component
 {
+    public $outerDivAttribute;
+    public $innerDivAttribute;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($outerDivAttribute, $innerDivAttribute)
     {
-        //
+        $this->outerDivAttribute = $outerDivAttribute;
+        $this->innerDivAttribute = $innerDivAttribute;
     }
 
     /**
