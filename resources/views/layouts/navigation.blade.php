@@ -26,7 +26,6 @@
 
             <!-- Settings Dropdown -->
             @auth
-
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <livewire:comment-notifications />
                     <x-dropdown align="right" width="48">
@@ -43,7 +42,7 @@
 
                         <x-slot name="content">
                             <!-- Authentication -->
-                            <x-dropdown-link :href="route('profile')">
+                            <x-dropdown-link href="profile/{{ auth()->id() }}">
                                     {{ __('View profile') }}
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
@@ -59,7 +58,6 @@
                     </x-dropdown>
                 </div>
             @else
-
                 <div class="hidden mt-2 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>

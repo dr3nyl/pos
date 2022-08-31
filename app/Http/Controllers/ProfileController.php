@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -13,7 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $profileData = User::findOrFail(request('id'));
+        return view('profile.index', ['profileData' => $profileData]);
     }
 
     /**

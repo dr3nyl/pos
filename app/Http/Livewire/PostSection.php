@@ -6,12 +6,14 @@ use App\Models\Post;
 use App\Traits\NotificationTrait;
 use Livewire\Component;
 
+use function PHPUnit\Framework\isNull;
+
 class PostSection extends Component
 {
     use NotificationTrait;
 
     public $postPerPage = 5;
-    public $isUserInProfileSection;
+    public $userId;
     // Event listeners
     protected $listeners = [
         'refreshPosts', 
@@ -31,7 +33,11 @@ class PostSection extends Component
      */
     public function refreshPosts()
     {
-        $this->posts = Post::latest()->limit($this->postPerPage)->get();
+        if (!empty($this->userId)) {
+            $this->posts = Post::latest()->where('user_id', $this->userId)->limit($this->postPerPage)->get();
+        } else {
+            $this->posts = Post::latest()->limit($this->postPerPage)->get();
+        }
     }
 
     /**
@@ -75,9 +81,12 @@ class PostSection extends Component
 
     public function render()
     {
-        $posts = Post::latest()->limit($this->postPerPage)->get();
+        if (!empty($this->userId)) {
+            $posts = Post::latest()->where('user_id', $this->userId)->limit($this->postPerPage)->get();
+        } else {
+            $posts = Post::latest()->limit($this->postPerPage)->get();
+        }
 
         return view('livewire.post-section', ['posts'=> $posts]);
     }
-
 }
