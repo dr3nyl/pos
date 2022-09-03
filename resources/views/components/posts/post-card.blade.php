@@ -1,6 +1,6 @@
 @props(['post', 'userId'])
 
-<x-card outerDivAttribute="py-2 {{ auth()->user() ? '' : 'mt-3' }}" innerDivAttribute="px-6 py-3 break-all {{ $userId ? 'w-full' : 'w-1/3' }}">
+<x-card outerDivAttribute="py-2 {{ auth()->user() ? '' : 'mt-3' }}" innerDivAttribute="px-6 py-3 break-all {{ $userId ? 'w-full' : 'w-96 lg:w-1/3' }}">
     <div class="header flex items-center mb-4">
         <img class="rounded-3xl mr-2" src="{{ asset('storage/' . $post->user->photo)}}" alt="" width="50" height="50">
         <div class="flex flex-col">

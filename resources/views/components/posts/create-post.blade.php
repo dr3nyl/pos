@@ -1,4 +1,4 @@
-<x-card outerDivAttribute="py-10" innerDivAttribute="w-1/3 sm:px-6 lg:px-8 p-6">
+<x-card outerDivAttribute="py-10" innerDivAttribute="w-96 lg:w-1/3 sm:px-6 lg:px-8 p-6">
     <form wire:submit.prevent="store" action="" method="post">
         <div class="header flex items-center">
             <img src="" alt="">
