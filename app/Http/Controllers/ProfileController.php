@@ -14,7 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profileData = User::findOrFail(request('id'));
+
+        $profileData = User::where('email', request('email'))->first();
         return view('profile.index', ['profileData' => $profileData]);
     }
 
