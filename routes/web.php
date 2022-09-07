@@ -20,7 +20,7 @@ Route::get('/', [UserDashboardController::class, 'index'])->name('dashboard');
 
 Route::middleware('auth')->group(function(){
 
-    Route::get('/{email}', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/{email}', [ProfileController::class, 'index'])->name('profile');
 
     Route::group([
         'prefix' => 'admin', 

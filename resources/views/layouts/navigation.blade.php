@@ -42,7 +42,7 @@
 
                         <x-slot name="content">
                             <!-- Authentication -->
-                            <x-dropdown-link href="{{ auth()->user()->email }}">
+                            <x-dropdown-link href="/profile/{{ auth()->user()->email }}">
                                     {{ __('View profile') }}
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">

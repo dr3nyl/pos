@@ -7,7 +7,7 @@
 
     <x-card outerDivAttribute="pt-8" innerDivAttribute="w-3/5 sm:px-6 lg:px-8 p-6">
         <div class="flex items-center mb-4">
-            <img class="rounded-full mr-2 hover:border hover:border-gray-100" src="{{ asset('storage/' . auth()->user()->photo)}}" alt="" width="130" height="130">
+            <img class="rounded-full mr-2 hover:border hover:border-gray-100" src="{{ asset('storage/' . $profileData->photo )}}" alt="" width="130" height="130">
             <div class="flex flex-col ml-2 w-full">
                 <!-- Post name -->
                 <h2 class="text-2xl font-semibold font-sans">{{ $profileData->name }}</h2>
