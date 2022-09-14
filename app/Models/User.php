@@ -76,5 +76,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    /**
+     * Return relationship of user to follow
+     *
+     * @return
+     * 
+     */
+    public function follow()
+    {
+        return $this->hasMany(Follow::class);
+    }
     
 }
